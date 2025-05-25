@@ -28,6 +28,7 @@ if (COVERAGE)
 	target_compile_options(check PRIVATE --coverage)
 	target_link_libraries(check --coverage)
 endif()
+
 #include_directories(\${CMAKE_CURRENT_SOURCE_DIR}/tests)
 #add_executable(testion tests/test1.cpp)
 #target_link_libraries(testion banking gtest gmock)
