@@ -11,5 +11,10 @@ project(itog)
 add_subdirectory(banking)
 #add_subdirectory(tests)
 
+include_directories(\${CMAKE_CURRENT_SOURCE_DIR}/tests)
+add_executable(testion tests/tests_goida.cpp)
+target_link_libraries(testion banking gtest gmock)
+
+
 
 
