@@ -21,14 +21,12 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y build-essential cmake
         sudo apt-get install -y libgtest-dev
-      run: cd /usr/src/googletest/
-      run: sudo mkdir build
-      run:  cd build
-      run:  sudo cmake ..
-      run:  sudo make
-      run:  sudo cp lib/* /usr/lib
-      run:  g++ main.cpp -o test -lgtest -lgmock -pthread
-      run:  ./test
+        cd /usr/src/googletest/
+        sudo mkdir build
+        cd build
+        sudo cmake ..
+        sudo make
+        sudo cp lib/* /usr/lib
 
     - name: Configure CMake
       #run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
