@@ -9,11 +9,17 @@ option(BUILD_TESTS "Build tests" OFF)
 project(itog)
 
 add_subdirectory(banking)
-#add_subdirectory(tests)
+add_subdirectory(third-party/gtest)
+add_subdirectory(tests)
 
-include_directories(\${CMAKE_CURRENT_SOURCE_DIR}/tests)
-add_executable(testion tests/tests_goida.cpp)
-target_link_libraries(testion banking gtest gmock)
+enable_testing()
+
+#set(INSTALL_GTEST OFF)
+
+
+#include_directories(\${CMAKE_CURRENT_SOURCE_DIR}/tests)
+#add_executable(testion tests/test1.cpp)
+#target_link_libraries(testion banking gtest gmock)
 
 
 
