@@ -58,11 +58,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       
-      - name: Download build artifacts
-        uses: actions/download-artifact@v4
-        with:
-          name: build-${{ matrix.build-type }}
-          path: build/
+      #- name: Download build artifacts
+        #uses: actions/download-artifact@v4
+        #with:
+          #name: build-${{ matrix.build-type }}
+          #path: build/
 
       - name: Install GTest (if not bundled)
         run: |
