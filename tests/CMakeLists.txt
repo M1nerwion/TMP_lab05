@@ -11,7 +11,7 @@ add_executable(testion test1.cpp)
 
 target_link_libraries(testion banking gtest gmock)
 
-add_test(Kurva testion)
+add_test(tests_lab5 testion)
 
 
 
