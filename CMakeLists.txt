@@ -12,7 +12,7 @@ add_subdirectory(banking)
 add_subdirectory(third-party/gtest)
 add_subdirectory(tests)
 
-#enable_testing()
+enable_testing()
 
 #set(INSTALL_GTEST OFF)
 
