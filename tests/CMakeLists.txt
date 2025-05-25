@@ -5,9 +5,13 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 project(testss)
 
+enable_testing()
+
 add_executable(testion test1.cpp)
 
 target_link_libraries(testion banking gtest gmock)
+
+add_test(Kurva testion)
 
 
 
