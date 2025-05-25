@@ -47,7 +47,7 @@ jobs:
 
     - name: Run tests
       run: |
-        cd build/tests && ctest --output-on-failure
+        cd build/tests && ctest --output-on-failure && ${{github.workspace}}/build/tests/testion
       #  build/tests/testion
       
 
