@@ -73,7 +73,7 @@ jobs:
     - name: Coverag
     #  run: coveralls --root . -E ".*gtest.*" -E ".*CMakeFiles.*"
       run: |
-        lcov --directory . --capture --output-file coverage.info --ignore-errors mismatch
+        lcov --directory {github.workspace}}/build --capture --output-file coverage.info --ignore-errors mismatch
         lcov --remove coverage.info '.*gtest.*' '.*CMakeFiles.*' 'tests/*' '/usr/*' --output-file coverage.info
       #  find build -name '*.gcda' | xargs gcov
       # lcov --list coverage.info
