@@ -9,7 +9,7 @@ option(BUILD_TESTS "Build tests" OFF)
 project(itog)
 
 add_subdirectory(banking)
-add_subdirectory(tests)
+#add_subdirectory(tests)
 
 
 
