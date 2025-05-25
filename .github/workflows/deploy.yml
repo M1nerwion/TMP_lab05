@@ -74,9 +74,9 @@ jobs:
     #  run: coveralls --root . -E ".*gtest.*" -E ".*CMakeFiles.*"
       run: |
         lcov --directory . --capture --output-file coverage.info --ignore-errors mismatch
-        lcov --remove coverage.info 'tests/*' '/usr/*' --output-file coverage.info --ignore-errors mismatch
+        lcov --remove coverage.info --root . -E ".*gtest.*" -E ".*CMakeFiles.*" 'tests/*' '/usr/*' --output-file coverage.info --ignore-errors mismatch
         lcov --list coverage.info
-        coveralls --root . -E ".*gtest.*" -E ".*CMakeFiles.*"
+      # coveralls --root . -E ".*gtest.*" -E ".*CMakeFiles.*"
       # coveralls-lcov --repo-token ${COVERALLS_TOKEN} coverage.info
 
 
