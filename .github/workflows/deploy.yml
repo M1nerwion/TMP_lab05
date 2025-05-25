@@ -53,8 +53,8 @@ jobs:
       run: |
         cd build/tests && ctest --output-on-failure && ${{github.workspace}}/build/tests/testion
         
-    - name: npm install
-      run: npm install
+    #- name: npm install
+      #run: npm install
 
     - name: Test
       run: make test-coverage
