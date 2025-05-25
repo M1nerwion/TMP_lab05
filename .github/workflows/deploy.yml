@@ -74,14 +74,14 @@ jobs:
     #  run: coveralls --root . -E ".*gtest.*" -E ".*CMakeFiles.*"
       run: |
         lcov --directory . --capture --output-file coverage.info --keep-going
-        lcov --remove coverage.info 'gtest*' 'tests/*' '/usr/*' --output-file coverage.info --keep-going
-        lcov --list coverage.info
+        lcov --remove coverage.info 'gtest*' 'tests/*' '/usr/*' --output-file coverage.info
+      # lcov --list coverage.info
 
-    - name: Coveralls
-      uses: coverallsapp/github-action@master
-      with:
-        path-to-lcov: ${{github.workspace}}/build/tests/coverage.info
-        github-token: ${{ secrets.GITHUB_TOKEN }}
+    # - name: Coveralls
+    #   uses: coverallsapp/github-action@master
+    #   with:
+    #     path-to-lcov: ${{github.workspace}}/build/tests/coverage.info
+    #     github-token: ${{ secrets.GITHUB_TOKEN }}
       # coveralls-lcov --repo-token ${COVERALLS_TOKEN} coverage.info
       # find build -name '*.gcda' | xargs gcov
       # coveralls --root . -E ".*gtest.*" -E ".*CMakeFiles.*"
