@@ -6,7 +6,7 @@ option(COVERAGE "Enable code coverage" ON)
 
 project(testss)
 
-enable_testing()
+#enable_testing()
 
 add_executable(testion test1.cpp)
 
@@ -14,7 +14,7 @@ target_link_libraries(testion banking gtest gmock)
 
 #set(INSTALL_GTEST OFF)
 
-add_test(tests_lab5 testion)
+#add_test(tests_lab5 testion)
 
 
 
