@@ -8,10 +8,6 @@ option(BUILD_TESTS "Build tests" ON)
 
 project(itog)
 
-add_subdirectory(banking)
-add_subdirectory(tests)
-
-
 if(BUILD_TESTS)
   enable_testing()
   add_subdirectory(third-party/gtest)
@@ -21,9 +17,8 @@ if(BUILD_TESTS)
   add_test(NAME check COMMAND check)
 endif()
 
-
-
-
+add_subdirectory(banking)
+add_subdirectory(tests)
 
 
 
