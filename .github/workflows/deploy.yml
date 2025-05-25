@@ -61,11 +61,20 @@ jobs:
     #- name: Test
       #run: make test-coverage
     
-    - name: Debug Coverage Files
-      run: |
-        cd build
-        find . -name "*.gcda"
-        echo "Checking for coverage files..."
+    - name: Use Node.js 16.16.0
+      uses: actions/setup-node@v3
+      with:
+        node-version: 16.16.0
+    - run: npm@5 ci
+    - run: npm run build --if-present
+    - run: npm run coverage
+
+    - name: Coveralls
+      uses: coverallsapp/github-action@master
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+
+
     
 
 

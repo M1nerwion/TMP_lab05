@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.8)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+option(COVERAGE "Enable code coverage" ON)
 
 project(testss)
 
@@ -11,7 +12,10 @@ add_executable(testion test1.cpp)
 
 target_link_libraries(testion banking gtest gmock)
 
+#set(INSTALL_GTEST OFF)
+
 add_test(tests_lab5 testion)
+
 
 
 
