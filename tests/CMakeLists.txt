@@ -5,9 +5,9 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 project(tests)
 
-add_executable(test tests.cpp)
+add_executable(testion tests_goida.cpp)
 
-target_link_libraries(test banking gtest gmock)
+target_link_libraries(testion banking gtest gmock)
 
 
 
