@@ -73,7 +73,7 @@ jobs:
     - name: Coverag
     #  run: coveralls --root . -E ".*gtest.*" -E ".*CMakeFiles.*"
       run: |
-        lcov --directory ${{github.workspace}}/test --capture --output-file coverage.info --keep-going
+        lcov --directory ${{github.workspace}}/test/ --capture --output-file coverage.info --keep-going
         lcov --remove coverage.info 'gtest*' '/usr/*' --output-file coverage.info
         lcov --list coverage.info 
         lcov --summary coverage.info
