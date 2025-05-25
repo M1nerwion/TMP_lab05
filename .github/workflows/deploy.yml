@@ -1,5 +1,5 @@
 name: Deploy
-
+github-token: ${{ secrets.GITHUB_TOKEN }}
 on:
   push:
     branches: [ "master" ]
