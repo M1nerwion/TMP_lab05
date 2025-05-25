@@ -60,32 +60,20 @@ jobs:
 
     #- name: Test
       #run: make test-coverage
-    - name: Debug Coverage Files
-      run: |
-        cd build
-        find . -name "*.gcda"
-        echo "Checking for coverage files..."
+    - name: Use Node.js 16.16.0
+      uses: actions/setup-node@v3
+      with:
+        node-version: 16.16.0
+      run: npm ci
+      run: npm run build --if-present
+      run: npm run coverage
 
-    - name: Generate Coverage Report
-      run: |
-        cd build
-        lcov --capture --directory . --output-file coverage.info --ignore-errors mismatch --rc branch_coverage=1 --rc geninfo_unexecuted_blocks=1
-        lcov --remove coverage.info '*/tests/*' '*/_deps/*' '/usr/*' --output-file coverage.info
-        lcov --list coverage.info || echo "Failed to list coverage.info"
-
-
-
-    - name: Check Coverage File
-      run: |
-        cd build
-        ls -l coverage.info || echo "Coverage file not generated"
-
-    - name: Upload Coverage to Coveralls
+    - name: Coveralls
       uses: coverallsapp/github-action@master
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
-        path-to-lcov: ./build/coverage.info
-        coveralls-token: ${{ secrets.COVERALLS_REPO_TOKEN }}
+
+    
 
 
 
