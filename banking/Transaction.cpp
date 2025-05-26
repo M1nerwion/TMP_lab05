@@ -38,7 +38,7 @@ bool Transaction::Make(Account& from, Account& to, int sum) {
 
   bool success = Debit(from, sum + fee_);
   if (!success) to.ChangeBalance(-sum);
-
+  std::cout << success << "\n";
   SaveToDataBase(from, to, sum);
   return success;
 }

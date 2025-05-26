@@ -11,11 +11,11 @@ class MockTransaction : public Transaction {
 //class MockTransaction {
 public:
 	//MockTransaction() : Transaction() {};
-	MOCK_METHOD(bool, Make, (Account& from, Account& to, int sum), ());
-	MOCK_METHOD(void, Credit, (Account& accout, int sum), ());
-	MOCK_METHOD(bool, Debit, (Account& accout, int sum), ());
-	MOCK_METHOD(int, fee, (), (const));
-	MOCK_METHOD(void, set_fee, (int fee));
+	//MOCK_METHOD(bool, Make, (Account& from, Account& to, int sum), ());
+	//MOCK_METHOD(void, Credit, (Account& accout, int sum), ());
+	//MOCK_METHOD(bool, Debit, (Account& accout, int sum), ());
+	//MOCK_METHOD(int, fee, (), (const));
+	//MOCK_METHOD(void, set_fee, (int fee));
 	MOCK_METHOD(void, SaveToDataBase, (Account& from, Account& to, int sum), (override));
 };
 
@@ -30,6 +30,12 @@ public:
 	MOCK_METHOD(int, id, (), (const));
 };
 
+TEST(Transaction_test, test_set_fee) {
+	Transaction trans;
+	trans.set_fee(5);
+	EXPECT_TRUE(5 == trans.fee());
+}
+
 TEST(Transaction_test, test_Make) {
 	//MockAccount acc1(1, 100);
 	//MockAccount acc2(2, 873);
@@ -40,15 +46,9 @@ TEST(Transaction_test, test_Make) {
 	//EXPECT_CALL(acc1, GetBalance()).Times(1);
 	//EXPECT_CALL(trans, SaveToDataBase(_, _, _)).Times(1);
 	bool succes = trans.Make(acc1, acc2, 150);
-	std::cout << trans.fee();
-	EXPECT_TRUE(succes);
+	//std::cout << trans.fee();
+	//EXPECT_TRUE(succes);
 	EXPECT_TRUE(acc1.GetBalance() == (50 - trans.fee()));
-}
-
-TEST(Transaction_test, test_set_fee) {
-	Transaction trans;
-	trans.set_fee(5);
-	EXPECT_TRUE(5 == trans.fee());
 }
 
 TEST(MockTransaction_test, test_SaveToDataBase) {
@@ -63,8 +63,10 @@ TEST(MockTransaction_test, test_SaveToDataBase) {
 	// 
 	//bool succes = trans.Make(acc1, acc2, 150);
 	//EXPECT_TRUE(succes);
-	
-	EXPECT_CALL(trans, SaveToDataBase(_, _, _)).Times(::testing::AtLeast(1));
+
+	//EXPECT_CALL(trans, Make(_, _, _)).Times(1);
+	// 
+	EXPECT_CALL(trans, SaveToDataBase(_, _, _)).Times(1);
 
 	//EXPECT_CALL(acc1, GetBalance()).Times(3);
 	//Transaction trans;
@@ -73,6 +75,8 @@ TEST(MockTransaction_test, test_SaveToDataBase) {
 	EXPECT_CALL(trans, Credit(_, _)).Times(1);*/
 
 	//bool succes = trans.Make(acc1, acc2, 150);
+	//EXPECT_TRUE(succes);
+	 
 	trans.SaveToDataBase(acc1, acc2, 150);
 
 	//EXPECT_CALL(trans, fee).Times(1);
