@@ -2,11 +2,11 @@ cmake_minimum_required(VERSION 3.8)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-option(COVERAGE "Enable code coverage" ON)
+#option(COVERAGE "Enable code coverage" ON)
 
 project(testss)
 
-#enable_testing()
+enable_testing()
 
 add_executable(testion test1.cpp)
 
