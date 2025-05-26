@@ -63,8 +63,7 @@ jobs:
 
     - name: Run tests
       run: |
-        cd build/tests && ctest --output-on-failure
-        ${{github.workspace}}/build/tests/check
+        cd build/tests && ctest --output-on-failure && ${{github.workspace}}/build/tests/testion
         
     #- name: npm install
       #run: npm install

@@ -8,8 +8,8 @@ add_link_options(--coverage)
 
 project(itog)
 
-add_subdirectory(banking)
 add_subdirectory(third-party/gtest)
+add_subdirectory(banking)
 add_subdirectory(tests)
 
 
