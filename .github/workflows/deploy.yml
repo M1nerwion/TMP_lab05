@@ -76,7 +76,8 @@ jobs:
         lcov --directory . --capture --output-file coverage.info --keep-going
         lcov --remove coverage.info 'gtest*' '/usr/*' --output-file coverage.info
         lcov --list coverage.info 
-        lcov --summary coverage.info
+        lcov --prune-tests
+    #    lcov --summary coverage.info
 
     # - name: Coveralls
     #   uses: coverallsapp/github-action@master
