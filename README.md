@@ -159,5 +159,4 @@ $ gist REPORT.md
 Copyright (c) 2015-2021 The ISC Authors
 ```
 
-[![Coverage Status](https://coveralls.io/repos/github/M1nerwion/TMP_DZ_Lab5/badge.svg?branch=main)](https://coveralls.io/github/M1nerwion/TMP_DZ_Lab5?branch=main)
-
+[![Coverage Status](https://coveralls.io/repos/github/M1nerwion/TMP_lab05/badge.svg?branch=master)](https://coveralls.io/github/M1nerwion/TMP_lab05?branch=master)

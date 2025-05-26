@@ -8,10 +8,14 @@
 using ::testing::_;
 
 class MockTransaction : public Transaction {
+//class MockTransaction {
 public:
-	MockTransaction() : Transaction() {};
-	MOCK_METHOD(bool, Make, (Account& from, Account& to, int sum));
-	MOCK_METHOD(void, Credit, (Account& accout, int sum));
+	//MockTransaction() : Transaction() {};
+	MOCK_METHOD(bool, Make, (Account& from, Account& to, int sum), ());
+	MOCK_METHOD(void, Credit, (Account& accout, int sum), ());
+	MOCK_METHOD(bool, Debit, (Account& accout, int sum), ());
+	MOCK_METHOD(int, fee, (), (const));
+	MOCK_METHOD(void, set_fee, (int fee));
 	MOCK_METHOD(void, SaveToDataBase, (Account& from, Account& to, int sum), (override));
 };
 
@@ -38,32 +42,47 @@ TEST(Transaction_test, test_Make) {
 	bool succes = trans.Make(acc1, acc2, 150);
 	std::cout << trans.fee();
 	EXPECT_TRUE(succes);
-	EXPECT_TRUE(acc1.GetBalance() == (50-trans.fee()));
+	EXPECT_TRUE(acc1.GetBalance() == (50 - trans.fee()));
 }
-//TEST(MockTransaction_test, test_SaveToDataBase) {
-//	MockAccount acc1(1, 100);
-//	MockAccount acc2(2, 873);
-//	
-//	//EXPECT_TRUE(Acc.GetBalance() == 999);
-//	//EXPECT_CALL(acc1, GetBalance()).Times(1);
-//	// 
-//	//bool succes = trans.Make(acc1, acc2, 150);
-//	//EXPECT_TRUE(succes);
-//	// 
-//	//EXPECT_CALL(trans, SaveToDataBase(_, _, _)).Times(1);
-//
-//	EXPECT_CALL(acc1, GetBalance()).Times(3);
-//	Transaction trans;
-//	//EXPECT_CALL(acc1, Lock()).Times(testing::AnyNumber());
-//	/*EXPECT_CALL(trans, Make(_, _, _)).Times(1);
-//	EXPECT_CALL(trans, Credit(_, _)).Times(1);*/
-//
-//	bool succes = trans.Make(acc1, acc2, 150);
-//	std::cout << acc1.id() << "\nцннннннннннннннннннннннннннннннннннннннннннннннидю\n";
-//	std::cout << acc1.GetBalance() << "\nцннннннннннннннннннннннннннннннннннннннннннннннидю\n";
-//	std::cout << acc2.id() << "\nцннннннннннннннннннннннннннннннннннннннннннннннидю\n";
-//	std::cout << acc2.GetBalance() << "\nцннннннннннннннннннннннннннннннннннннннннннннннидю\n";
-//}
+
+TEST(Transaction_test, test_set_fee) {
+	Transaction trans;
+	trans.set_fee(5);
+	EXPECT_TRUE(5 == trans.fee());
+}
+
+TEST(MockTransaction_test, test_SaveToDataBase) {
+	/*MockAccount acc1(1, 100);
+	MockAccount acc2(2, 873);*/
+	Account acc1(1, 200);
+	Account acc2(2, 873);
+	//::testing::NiceMock<MockTransaction> trans;
+	MockTransaction trans;
+	//EXPECT_TRUE(Acc.GetBalance() == 999);
+	//EXPECT_CALL(acc1, GetBalance()).Times(1);
+	// 
+	//bool succes = trans.Make(acc1, acc2, 150);
+	//EXPECT_TRUE(succes);
+	
+	EXPECT_CALL(trans, SaveToDataBase(_, _, _)).Times(::testing::AtLeast(1));
+
+	//EXPECT_CALL(acc1, GetBalance()).Times(3);
+	//Transaction trans;
+	//EXPECT_CALL(acc1, Lock()).Times(testing::AnyNumber());
+	/*EXPECT_CALL(trans, Make(_, _, _)).Times(1);
+	EXPECT_CALL(trans, Credit(_, _)).Times(1);*/
+
+	//bool succes = trans.Make(acc1, acc2, 150);
+	trans.SaveToDataBase(acc1, acc2, 150);
+
+	//EXPECT_CALL(trans, fee).Times(1);
+
+	//int comis = trans.fee();
+	std::cout << acc1.id() << "\nцннннннннннннннннннннннннннннннннннннннннннннннидю\n";
+	std::cout << acc1.GetBalance() << "\nцннннннннннннннннннннннннннннннннннннннннннннннидю\n";
+	std::cout << acc2.id() << "\nцннннннннннннннннннннннннннннннннннннннннннннннидю\n";
+	std::cout << acc2.GetBalance() << "\nцннннннннннннннннннннннннннннннннннннннннннннннидю\n";
+}
 
 TEST(Account_test, test_GetBalance1) {
 	Account acc(101, 1337);
