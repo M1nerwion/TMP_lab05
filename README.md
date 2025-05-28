@@ -14,9 +14,8 @@
 4. Настройте [Coveralls.io](https://coveralls.io/).
 
 ## P.S.
-```sh
 Из-за того, что понимание того, как работают mock-объекты, пришло позже написания обычных gtest-тестов для Transaction и Account, то для Account есть обе версии тестов: и mock, и gtest.
-```
+
 ### План выполненяия:
 1. Создаем CMakeLists в banking и собираем библиотеку.
 2. Подключаем gtest и gmock как submodule
