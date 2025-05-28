@@ -23,4 +23,4 @@
 4. Добавляем в .github/workwlows deploy.yml в котором описываем установку зависимостей, сборку, подключение overalls и тесты
 5. Региструемся на overalls и синхронизируем репозиторий
 
-[![Coverage Status](https://coveralls.io/repos/github/M1nerwion/TMP_lab05/badge.svg?branch=master)](https://coveralls.io/github/M1nerwion/TMP_lab05?branch=master)
+
