@@ -32,7 +32,7 @@ jobs:
 
     - name: Run tests
       run: |
-        cd build && ctest --output-on-failure && ${{github.workspace}}/build/tests/testion
+        cd ${{github.workspace}}/build/tests && ctest --output-on-failure && ${{github.workspace}}/build/tests/testion
         
     - name: Coverage
       run: |
